@@ -52,4 +52,4 @@ data <- subset(data, year >= 2015)
 data <- subset(data, week_end < "07/01/2023")
 
 ## save counts
-write.csv(data, "~/cdc-weekly11.csv", row.names=FALSE)
+write.csv(data, "~/cdc-weekly_counts.csv", row.names=FALSE)
