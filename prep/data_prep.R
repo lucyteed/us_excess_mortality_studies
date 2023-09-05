@@ -11,11 +11,6 @@ library(lubridate)
 dt2014_2019 <- read.csv("~/Weekly-Counts-of-Deaths-by-State-and-Select-Causes.csv", 
                         header=TRUE, sep=',')
 
-dt2014_2019 <- read.csv("/Users/lucyteed/weekly_2014_2019.csv",
-                        header=TRUE,sep=',')
-dt2020_present <- read.csv("/Users/lucyteed/cdc-data-final.csv",
-                           header=TRUE,sep=',')
-
 ## read dataset for counts from January 2020-present
 dt2020_present <- read.csv("~/Provisional_COVID-19_Death_Counts_by_Week_Ending_Date_and_State.csv", 
                            header=TRUE, sep=',')
@@ -49,7 +44,11 @@ data <- rbind(dt2014_2019, dt2020_present)
 
 ## we only used data after 2015 until June 30
 data <- subset(data, year >= 2015)
-data <- subset(data, week_end < "07/01/2023")
+data$year <- format(as.Date(data$week_end, format="%m/%d/%Y"),"%Y")
+data$month <- format(as.Date(data$week_end, format="%m/%d/%Y"),"%m")
+data$day <- format(as.Date(data$week_end, format="%m/%d/%Y"),"%d")
+data$week_end <- make_date(year = data$year, month = data$month, day = data$day)
+data <- subset(data, week_end < "2023-07-01")
 
 ## save counts
 write.csv(data, "~/cdc-weekly_counts.csv", row.names=FALSE)
