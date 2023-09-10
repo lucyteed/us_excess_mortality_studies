@@ -50,6 +50,7 @@ g_exc <- ggplot(excess, aes(x = date)) +
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.grid.major.y = element_line(color = "lightgrey"),
+        panel.grid.major.x = element_line(color = "lightgrey"),
         legend.position = c(0.955, 0.98),
         legend.justification = c("right", "top"),
         legend.box.just = "right",
