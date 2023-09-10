@@ -32,6 +32,7 @@ observed <- ggplot(d, aes(x = date)) +
         panel.background = element_rect(fill = "white"),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_line(color = "lightgrey"),
         panel.grid.major.y = element_line(color = "lightgrey")) +
   labs(x = "",
        y = "Observed Deaths")
