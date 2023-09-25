@@ -196,8 +196,7 @@ excess_estimates$economist_excess_upper95 <- "TBC" # calculate from R script
 ##  03_ensemble_excess_model from the following GitHub repository: 
 ##  https://github.com/ihmeuw-demographics/publication_covid_em
 
-## We used our dataset in the 01_data_prep and 02_data_processing instead of 
-##  the IHME's data sources.
+## We applied the prepared dataset in the 01_data_prep and 02_data_processing.
 
 ## After running the scripts, extract expected counts and add them to 
 ##  expected_estimates.csv
@@ -205,11 +204,11 @@ expected_estimates$ihme_expected <- "TBC"           # add in results from script
 expected_estimates$ihme_expected_lower95 <- "TBC"   # add in results from script
 expected_estimates$ihme_expected_upper95 <- "TBC"   # add in results from script
 
-## After running the scripts, compute expected counts and add them to 
+## After running the scripts, compute excess counts and append them to 
 ##  excess_estimates.csv
-expected_estimates$ihme_excess <- "TBC"           # add in results from script
-expected_estimates$ihme_excess_lower95 <- "TBC"   # add in results from script
-expected_estimates$ihme_excess_upper95 <- "TBC"   # add in results from script
+excess_estimates$ihme_excess <- "TBC"           # add in results from script
+excess_estimates$ihme_excess_lower95 <- "TBC"   # add in results from script
+excess_estimates$ihme_excess_upper95 <- "TBC"   # add in results from script
 
 ## Save expected estimates
 write.csv(expected_estimates, "~/expected_estimates.csv", row.names = FALSE)

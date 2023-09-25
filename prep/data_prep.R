@@ -5,9 +5,7 @@ library(lubridate)
 ## https://data.cdc.gov/NCHS/Weekly-Counts-of-Deaths-by-State-and-Select-Causes/3yf8-kanr
 ## https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-Week-Ending-D/r8kw-7aab
 
-## The work in this research note accessed the second dataset on August 10, 2023.
-
-## read dataset for counts from January 2014-December 2019
+## read dataset to extract counts from January 2015-December 2019
 dt2014_2019 <- read.csv("~/Weekly-Counts-of-Deaths-by-State-and-Select-Causes.csv", 
                         header=TRUE, sep=',')
 
@@ -31,7 +29,6 @@ colnames(dt2020_present)[11] <- "total_observed"
 ## subset to weekly counts
 dt2020_present <- subset(dt2020_present, Group=="By Week")
 
-## only keep the necessary columns for all-cause excess mortality estimates
 dt2014_2019 <- dt2014_2019[-c(6:30)]
 dt2020_present <- dt2020_present[-c(1:2,4,6,8,10,12:17)]
 
@@ -39,10 +36,8 @@ dt2020_present <- dt2020_present[-c(1:2,4,6,8,10,12:17)]
 dt2014_2019 <- subset(dt2014_2019, location == "United States")
 dt2020_present <- subset(dt2020_present, location == "United States")
 
-## combine two datasets to gain data for January 2014-present
 data <- rbind(dt2014_2019, dt2020_present)
 
-## we only used data after 2015 until June 30
 data <- subset(data, year >= 2015)
 data$year <- format(as.Date(data$week_end, format="%m/%d/%Y"),"%Y")
 data$month <- format(as.Date(data$week_end, format="%m/%d/%Y"),"%m")
