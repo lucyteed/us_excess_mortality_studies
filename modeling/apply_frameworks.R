@@ -24,14 +24,14 @@ exp_obs_bymonthyear$month <- as.numeric(exp_obs_bymonthyear$month)
 ## Run the code included in the R script starting from line 16 
 ##    and change the lines listed below:
 # Change lines 28-42 to the following:
-acm_predictions <- data.frame(iso3 = rep(countries, each = 24),
+acm_predictions <- data.frame(iso3 = rep(location, each = 24),
                               year = rep(c(rep(2020, 12), 
                                            rep(2021, 12),
                                            rep(2022, 12),
                                            rep(2023, 12)), 
-                                         times = length(countries)),
+                                         times = length(location)),
                               month = rep(c(1:12, 1:12, 1:12, 1:12), 
-                                          times = length(countries)),
+                                          times = length(location)),
                               expected_acm = NA,
                               expected_acm_se = NA,
                               expected_log_acm = NA,
